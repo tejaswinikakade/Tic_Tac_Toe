@@ -1,0 +1,22 @@
+name: Sync Azure DevOps to GitHub
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Azure DevOps Repo
+        uses: actions/checkout@v2
+        with:
+          repository: https://dev.azure.com/tkakade/_git/NEW
+          token: G2sCWlcomoRaMtvrR9MEDrG1D4HQ62ecTxPcP4lQARndcxJwAeQNJQQJ99BCACAAAAAbZC7ZAAASAZDO0yYv
+
+      - name: Push to GitHub
+        run: |
+          git remote add github https://tejaswinikakade:${{ secrets.GITHUB_TOKEN }}@github.com/tejaswinikakade/Tic_Tac_Toe.git
+          git push --mirror github
