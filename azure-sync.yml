@@ -13,8 +13,8 @@ jobs:
       - name: Checkout Azure DevOps Repo
         uses: actions/checkout@v2
         with:
-          repository: https://dev.azure.com/tkakade/_git/NEW
-          token: G2sCWlcomoRaMtvrR9MEDrG1D4HQ62ecTxPcP4lQARndcxJwAeQNJQQJ99BCACAAAAAbZC7ZAAASAZDO0yYv
+          repository: https://dev.azure.com/tkakade/_git/New-Poc
+          token: FxuhZxcJj0Lh9k8NhGjxylpoue9zB5UykjOtyzCXJXK7KEMTzrFVJQQJ99BDACAAAAAbZC7ZAAASAZDO4Qbc
 
       - name: Push to GitHub
         run: |
