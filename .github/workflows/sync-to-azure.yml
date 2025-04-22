@@ -18,5 +18,5 @@ jobs:
 
       - name: Push to Azure DevOps
         run: |
-          git remote add azure https://${{ secrets.tkakade }}:${{ secrets.AZURE_PAT }}@${{ secrets.https://dev.azure.com/tkakade/New-Poc/_git/New-Poc }}
+          git remote add azure https://${{ secrets.tkakade }}:${{ secrets.AZURE_PAT }}@${{ secrets.secrets.AZURE_REPO_URL }}
           git push azure masterr:master --force
