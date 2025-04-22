@@ -1,0 +1,22 @@
+name: Sync to Azure DevOps
+
+on:
+  push:
+    branches:
+      - master  
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "tejaswinikakade"
+          git config --global user.email "tejukakade1821@gmail.com"
+
+      - name: Push to Azure DevOps
+        run: |
+          git remote add azure https://${{ secrets.tkakade }}:${{ FxuhZxcJj0Lh9k8NhGjxylpoue9zB5UykjOtyzCXJXK7KEMTzrFVJQQJ99BDACAAAAAbZC7ZAAASAZDO4Qbc }}@${{ secrets.https://dev.azure.com/tkakade/New-Poc/_git/New-Poc }}
+          git push azure HEAD:main --force
