@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master  
+
 jobs:
   mirror:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code from GitHub
         uses: actions/checkout@v3
@@ -18,6 +20,5 @@ jobs:
 
       - name: Push to Azure DevOps
         run: |
-          git remote add azure https:https://dev.azure.com/tkakade:${{ secrets.AZURE_PAT }}@${{ secrets.secrets.AZURE_REPO_URL }}
-          git push azure HEAD:refs/heads/master
-
+          git remote add azure https://tejaswinikakade:${{ secrets.AZURE_PAT }}@dev.azure.com/tkakade/New-Poc/_git/New-Poc
+          git push azure master:master --force
