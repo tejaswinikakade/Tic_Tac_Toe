@@ -1,22 +1,25 @@
-name: Sync Azure DevOps to GitHub
+name: Sync to Azure DevOps
 
 on:
   push:
     branches:
-      - main
-      - develop
+      - master  
 
 jobs:
-  sync:
+  mirror:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Azure DevOps Repo
-        uses: actions/checkout@v2
-        with:
-          repository: https://dev.azure.com/tkakade/_git/New-Poc
-          token: FxuhZxcJj0Lh9k8NhGjxylpoue9zB5UykjOtyzCXJXK7KEMTzrFVJQQJ99BDACAAAAAbZC7ZAAASAZDO4Qbc
 
-      - name: Push to GitHub
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+      - name: Set up Git
         run: |
-          git remote add github https://tejaswinikakade:${{ secrets.GITHUB_TOKEN }}@github.com/tejaswinikakade/Tic_Tac_Toe.git
-          git push --mirror github
+          git config --global user.name "tejaswinikakade"
+          git config --global user.email "tejukakade1821@gmail.com"
+
+      - name: Push to Azure DevOps
+        run: |
+          git remote add azure https://tejaswinikakade:${{ secrets.AZURE_PAT }}@dev.azure.com/tkakade/New-Poc/_git/New-Poc
+          git push azure master:master --force
